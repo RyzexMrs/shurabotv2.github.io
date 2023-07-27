@@ -5,7 +5,7 @@ document.body.innerHTML += `
     <div class="two fields">
 	<div class="field" id="botname">
         <label>Name</label>
-        <div class="ui large labeled input"><input type="text" value="${params.get('name') || "shurallah"}" placeholder="Nickname" maxlength="30" spellcheck="false" data-ms-editor="true"></div>
+        <div class="ui large labeled input"><input type="text" value="${params.get('name') || "shurallah${Math.floor(Math.random() * 960)} placeholder="Nickname" maxlength="30" spellcheck="false" data-ms-editor="true"></div>
       </div>
       <div class="field">
         <label>Room</label>
