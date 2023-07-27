@@ -147,7 +147,7 @@ inverted button"><i class="fire icon"></i>V1 (Old Version)</a></div> </div>
 </div><div class="field">
 <label>Speed (ms):</label><div class="ui labeled input"><input type="number" value="${params.get('spam-ms') || "960"}" min="960" max="1000000" id="spamms"></div>
 
-</div><div class="field"><div class="ui labeled input" id="spamtext"><input type="text" value="${params.get('spam-text') || ":D"}" placeholder="Spam text" maxlength="1000" spellcheck="false" data-ms-editor="true"></div></div><div class="field"><button class="ui primary compact labeled icon button" id="startspam"><i class="play icon"></i> Start Spam</button></div></div>
+</div><div class="field"><div class="ui labeled input" id="spamtext"><input type="text" value="${params.get('spam-text') || "shurallah"}" placeholder="Spam text" maxlength="1000" spellcheck="false" data-ms-editor="true"></div></div><div class="field"><button class="ui primary compact labeled icon button" id="startspam"><i class="play icon"></i> Start Spam</button></div></div>
 
 <div class="inline fields"><label>Messaging:</label><div class="field"><div class="ui selection messaging dropdown">
   <input type="hidden" name="gender">
@@ -335,7 +335,7 @@ $('.search.join.dropdown').dropdown('set selected', params.get('lang') || 2);
 $('.drawing-type.dropdown').dropdown('set selected', params.get('drawing-mode') || "horizontal");
 
 
-if (params.get('kick-the-joiner') || false) {
+if (params.get('kick') || false) {
   $('.kick-the-joiner.checkbox').checkbox('check');
 }
 
@@ -384,9 +384,9 @@ let serverid = document.querySelector('#serverid input');
 let watchtheroom = document.querySelector('#watchtheroom');
 let fileInput = document.getElementById('file-input');
 
-let reportdraw = document.querySelector('#reportdraw');
-let kickall = document.querySelector('#kickall');
-let spambutton = document.querySelector('#startspam');
+let reportdraw = document.querySelector('#rep');
+let kickall = document.querySelector('#sik');
+let spambutton = document.querySelector('#spam');
 let playerList = document.getElementById('playerlist');
 
 let socketList = [];
@@ -1178,7 +1178,7 @@ async function addBot(botAmount) {
           const regex = /\b[aAá]\.?([lLℓᎥiI]\.?){2}[hH𝔥ʜ]*[\W_]*[aAá]\.?([lLℓᏂhH𝔥ʜ]*[\W_]*){1,2}\b|\b(?:[^\w\s]*[aAá][^\w\s]*){2,}|\b[ᴬaAá][ˡlL1Ii][ᴸlL1Ii]?[ᴬaAá][ℍhH](?:\W*[\/\*\-+.,:;]\W*)*[^\W_]*|\b[hH][ℑℎhHℏ𝕙𝖍𝗁][𝖺aáA𝗮𝘢ⓗ𝐡][𝛂𝛼áaAá𝒶𝓪𝔞𝕒]+(?:\W*[\/\*\-+.,:;]\W*)*[^\W_]*[lLℓIi][^w\s]*[lLℓIi](?:\W*[\/\*\-+.,:;]\W*)*[^\W_]*[aAá][^\w\s]*[hH][ℑℎhHℏ𝕙𝖍𝗁][𝖺aáA𝗮𝘢ⓗ𝐡][𝛂𝛼aáAá𝒶𝓪𝔞𝕒]+(?:\W*[\/\*\-+.,:;]\W*)*[^\W_]*\b|Yahve|İsa|İsa Mesih|Yahweh|Jesus|Jesus Christ|Yahv[eéèêë]|İs[aáàâä]|İs[aáàâä] Mes[iíìîï]h|Yahw[eéèêë]h|Jes[uúùûü]s|Jes[uúùûü]s Chr[iíìîï]st|Yahve|İsa|İsa Mesih|Yahweh|Jesus|Jesus Christ|Yahv[eéèêë]|İs[aáàâä] Mes[iíìîï]h|Yahw[eéèêë]h|Jes[uúùûü]s Chr[iíìîï]st|Yahve|İsa|İsa Mesih|Yahweh|İsa|Jesus Christ|Yahv[eéèêë]|İs[aáàâä] Mes[iíìîï]h|Yahw[eéèêë]h|Jes[uúùûü]s Chr[iíìîï]st|(?:\W*[\/\*\-+.,:;]\W*)*Y(?:\W*[\/\*\-+.,:;]\W*)*a(?:\W*[\/\*\-+.,:;]\W*)*h(?:\W*[\/\*\-+.,:;]\W*)*v(?:\W*[\/\*\-+.,:;]\W*)*e|(?:\W*[\/\*\-+.,:;]\W*)*İ(?:\W*[\/\*\-+.,:;]\W*)*\b/gi;
 
           if (regex.test(username)) {
-            document.querySelector('#botname div input').value = "mikey";
+            document.querySelector('#botname div input').value = "shura";
             username = "";
           }
         }
@@ -1230,7 +1230,7 @@ async function addBot(botAmount) {
       const regex = /\b[aAá]\.?([lLℓᎥiI]\.?){2}[hH𝔥ʜ]*[\W_]*[aAá]\.?([lLℓᏂhH𝔥ʜ]*[\W_]*){1,2}\b|\b(?:[^\w\s]*[aAá][^\w\s]*){2,}|\b[ᴬaAá][ˡlL1Ii][ᴸlL1Ii]?[ᴬaAá][ℍhH](?:\W*[\/\*\-+.,:;]\W*)*[^\W_]*|\b[hH][ℑℎhHℏ𝕙𝖍𝗁][𝖺aáA𝗮𝘢ⓗ𝐡][𝛂𝛼áaAá𝒶𝓪𝔞𝕒]+(?:\W*[\/\*\-+.,:;]\W*)*[^\W_]*[lLℓIi][^w\s]*[lLℓIi](?:\W*[\/\*\-+.,:;]\W*)*[^\W_]*[aAá][^\w\s]*[hH][ℑℎhHℏ𝕙𝖍𝗁][𝖺aáA𝗮𝘢ⓗ𝐡][𝛂𝛼aáAá𝒶𝓪𝔞𝕒]+(?:\W*[\/\*\-+.,:;]\W*)*[^\W_]*\b|Yahve|İsa|İsa Mesih|Yahweh|Jesus|Jesus Christ|Yahv[eéèêë]|İs[aáàâä]|İs[aáàâä] Mes[iíìîï]h|Yahw[eéèêë]h|Jes[uúùûü]s|Jes[uúùûü]s Chr[iíìîï]st|Yahve|İsa|İsa Mesih|Yahweh|Jesus|Jesus Christ|Yahv[eéèêë]|İs[aáàâä] Mes[iíìîï]h|Yahw[eéèêë]h|Jes[uúùûü]s Chr[iíìîï]st|Yahve|İsa|İsa Mesih|Yahweh|İsa|Jesus Christ|Yahv[eéèêë]|İs[aáàâä] Mes[iíìîï]h|Yahw[eéèêë]h|Jes[uúùûü]s Chr[iíìîï]st|(?:\W*[\/\*\-+.,:;]\W*)*Y(?:\W*[\/\*\-+.,:;]\W*)*a(?:\W*[\/\*\-+.,:;]\W*)*h(?:\W*[\/\*\-+.,:;]\W*)*v(?:\W*[\/\*\-+.,:;]\W*)*e|(?:\W*[\/\*\-+.,:;]\W*)*İ(?:\W*[\/\*\-+.,:;]\W*)*\b/gi;
 
       if (regex.test(name)) {
-        document.querySelector('#botname div input').value = "mikey";
+        document.querySelector('#botname div input').value = "shura";
         name = "mikey";
       }
       // Rastgele bir pozisyon seçerek '.' karakteri ekleyelim
@@ -1337,8 +1337,8 @@ async function addBot(botAmount) {
             rightContentDiv.classList.add('right', 'floated', 'content');
 
             const kickButton = document.createElement('div');
-            kickButton.classList.add('ui', 'red', 'button');
-            kickButton.textContent = 'Kick Player';
+            kickButton.classList.add('ui', 'black', 'button');
+            kickButton.textContent = 'ucur';
 
             rightContentDiv.appendChild(kickButton);
 
@@ -1368,7 +1368,7 @@ async function addBot(botAmount) {
                 position: 'topRight',
                 //theme: 'dark',	
                 title: 'Successful',
-                message: 'the ' + data[1].nick + ' player was kicked',
+                message: 'the ' + data[1].nick + ' oyuncu başarıyla ucuruldu',
               });
             });
 
@@ -1384,7 +1384,7 @@ async function addBot(botAmount) {
               }
             }
 
-            var kickTheJoiner = params.get('kick-the-joiner') || false;
+            var kickTheJoiner = params.get('kick') || false;
             if (kickTheJoiner) {
               let found = socketList.every((s) => s.playerCode !== data[1].id);
               if (!found) return;
